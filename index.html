@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Nuestra Historia de Amor</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            font-family: Arial, sans-serif;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .titulo {
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            margin-bottom: 40px;
+            font-size: 2em;
+        }
+
+        .mensaje-amor {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .mensaje-amor:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 12px rgba(0,0,0,0.2);
+        }
+
+        .corazon-flotante {
+            position: fixed;
+            font-size: 24px;
+            color: #ff5252;
+            animation: flotar 3s infinite ease-in-out;
+            z-index: 100;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        @keyframes flotar {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .boton-personalizar {
+            background: #ff5252;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+        }
+
+        .boton-personalizar:hover {
+            background: #ff6b81;
+            transform: scale(1.05);
+        }
+
+        .personalizacion {
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        input[type="color"] {
+            width: 50px;
+            height: 35px;
+            margin-right: 10px;
+        }
+
+        .formulario {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 20px;
+        }
+
+        .boton-enviar {
+            background: #ff5252;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+        }
+
+        .boton-enviar:hover {
+            background: #ff6b81;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="titulo">Nuestra Historia de Amor</h1>
+        
+        <div class="mensaje-amor">
+            <p>Para la persona más especial del mundo...</p>
+            <p>En el jardín de tus ojos,
+
+donde florece el amanecer,
+
+mi corazón late sin cesar,
+
+como mar que encuentra su puerto.
+
+Tu sonrisa es un faro
+
+que guía mis noches oscuras,
+
+tu voz, un canto de sirenas
+
+que me hace navegar seguras.
+
+Como el sol que pinta el atardecer,
+
+tú iluminas mi camino,
+
+como la luna que baña la noche,
+
+tú alumbras mi destino.
+
+En tus brazos es mi hogar,
+
+mi refugio, mi paz,
+
+contigo es donde quiero estar,
+
+siempre, en cualquier lugar.
+
+
+</p>
+        </div>
+
+        <button class="boton-personalizar">Personalizar Página</button>
+
+        <div class="personalizacion" style="display: none;">
+            <div class="input-group">
+                <label>Cambiar color de fondo:</label>
+                <input type="color" id="colorFondo" value="#ff9a9e">
+            </div>
+            <div class="input-group">
+                <label>Cambiar color de texto:</label>
+                <input type="color" id="colorTexto" value="#ffffff">
+            </div>
+            <div class="input-group">
+                <label>Mensaje personalizado:</label>
+                <textarea id="mensajePersonal" rows="4" cols="50"></textarea>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Crear corazones flotantes aleatorios
+        function crearCorazonAleatorio() {
+            const corazon = document.createElement('div');
+            corazon.className = 'corazon-flotante';
+            corazon.textContent = '❤️';
+
+            const x = Math.random() * window.innerWidth;
+            const y = Math.random() * window.innerHeight;
+
+            corazon.style.left = `${x}px`;
+            corazon.style.top = `${y}px`;
+
+            document.body.appendChild(corazon);
+
+            corazon.addEventListener('click', () => {
+                corazon.style.animation = 'none';
+                corazon.offsetHeight;
+                corazon.style.animation = 'flotar 3s infinite ease-in-out';
+                
+                for(let i = 0; i < 5; i++) {
+                    setTimeout(() => {
+                        crearEstrella(corazon.offsetLeft + 25, 
+                                    corazon.offsetTop + 25);
+                    }, i * 100);
+                }
+            });
+        }
+
+        function crearEstrella(x, y) {
+            const estrella = document.createElement('div');
+            estrella.textContent = '🥰😘';
+            estrella.style.position = 'fixed';
+            estrella.style.left = `${x}px`;
+            estrella.style.top = `${y}px`;
+            estrella.style.fontSize = '24px';
+            estrella.style.color = '#ffd700';
+            estrella.style.zIndex = '100';
+            estrella.style.pointerEvents = 'none';
+            
+            document.body.appendChild(estrella);
+
+            estrella.animate([
+                { transform: 'translateY(0)', opacity: 1 },
+                { transform: 'translateY(100vh)', opacity: 0 }
+            ], {
+                duration: 1000,
+                easing: 'ease-out'
+            }).onfinish = () => estrella.remove();
+        }
+
+        // Eventos interactivos
+        document.querySelector('.boton-personalizar').addEventListener('click', () => {
+            const personalizacion = document.querySelector('.personalizacion');
+            personalizacion.style.display = 
+                personalizacion.style.display === 'none' ? 'block' : 'none';
+        });
+
+        // Event listeners para personalización
+        document.getElementById('colorFondo').addEventListener('change', (e) => {
+            document.body.style.background = 
+                `linear-gradient(135deg, ${e.target.value} 0%, 
+                            ${ajustarColor(e.target.value, 20)} 100%)`;
+        });
+
+        document.getElementById('colorTexto').addEventListener('change', (e) => {
+            document.querySelector('.titulo').style.color = e.target.value;
+        });
+
+        document.getElementById('mensajePersonal').addEventListener('input', (e) => {
+            const mensajeDiv = document.querySelector('.mensaje-amor');
+            mensajeDiv.innerHTML = e.target.value || 
+                '<p>Para la persona más especial del mundo...</p>' +
+                '<p>Te amo más cada día que pasa.</p>';
+        });
+
+        // Manejo del formulario
+        const formulario = document.getElementById('formularioAmor');
+        formulario.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const nombre = document.getElementById('nombre').value;
+            const mensaje = document.getElementById('mensaje').value;
+
+            alert(`¡Mensaje enviado! Gracias ${nombre} por tu mensaje: "${mensaje}"`);
+
+            // Limpiar el formulario
+            formulario.reset();
+        });
+
+        // Crear varios corazones al cargar la página
+        window.onload = () => {
+            for(let i = 0; i < 30; i++) {
+                crearCorazonAleatorio();
+            }
+        };
+
+        // Función auxiliar para ajustar color
+        function ajustarColor(color, amount) {
+            return '#' + color.replace(/^#/, '').replace(/../g, 
+                color => ('0x' + color).toString(16).slice(-2));
+        }
+    </script>
+</body>
+</html>
